@@ -13,12 +13,18 @@ $(document).ready(function(){
     hr.onreadystatechange = function() {
       if(hr.readyState == 4 && hr.status == 200) {
         var return_data = JSON.parse(hr.responseText);
-        //console.log(return_data);
-        ("#ProductName").val('');
+        console.log(return_data);
+        $("#ProductName").val('');
+        $('#replyMessageContent').html("<label>Status: "+return_data.status+"</label>");
        }
     }
-     hr.send(vars); 
+    if(pName){
+    	 hr.send(vars); 
      $('#replyMessageContent').html("<i style='color:green;'>posting product.....please waite.....</i>");
-	
+    }else{
+     $('#replyMessageContent').html("<i style='color:#F00;'>Product Name is Required</i>");
+    }
+
+    	
 	});
 });
