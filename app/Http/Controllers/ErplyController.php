@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// include ERPLY API class
+use App\Classes\EAPI;
 
 class ErplyController extends Controller
 {
