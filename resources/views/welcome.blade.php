@@ -92,7 +92,7 @@
                                 </a>
                                 
                             </div>
-                            <p id="replyMessageContent"></p>
+                            <div id="replyMessageContent"style="text-align: left;"></div>
                         </div>
                        
 

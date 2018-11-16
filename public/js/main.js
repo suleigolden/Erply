@@ -13,9 +13,18 @@ $(document).ready(function(){
     hr.onreadystatechange = function() {
       if(hr.readyState == 4 && hr.status == 200) {
         var return_data = JSON.parse(hr.responseText);
-        console.log(return_data);
-        $("#ProductName").val('');
-        $('#replyMessageContent').html("<label>Status: "+return_data.status+"</label>");
+        var checkStatus = return_data.status['responseStatus'];
+	        if(checkStatus == "error"){
+	        	$('#replyMessageContent').html("<div>request: "+return_data.status['request']+"<br>requestUnixTime: "+return_data.status['requestUnixTime']+"<br>responseStatus: "+return_data.status['responseStatus']+"<br>errorCode: "+return_data.status['errorCode']+"<br>errorField: "+return_data.status['errorField']+"</div>");
+	        }else{
+	        $("#ProductName").val('');
+	        $('#replyMessageContent').html("<label>Status: "+return_data.status['responseStatus']+"</label>");
+	       }
+
+       }else{
+       	// var return_data = JSON.parse(hr.responseText);
+        //console.log(return_data.responseStatus);
+        //console.log(hr.responseText);
        }
     }
     if(pName){
